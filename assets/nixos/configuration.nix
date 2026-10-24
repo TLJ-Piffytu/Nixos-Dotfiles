@@ -7,7 +7,10 @@
     ];
   
   # BOOT --------------------------------------------------------------------------------
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "nodev";
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.useOSProber = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # NETWORKING --------------------------------------------------------------------------
@@ -73,6 +76,10 @@
   nixpkgs.config.allowUnfree = true;
 
   # PACKAGES-----------------------------------------------------------------------------
+  fonts.packages = with pkgs; [
+    corefonts
+  ];
+
   environment.systemPackages = with pkgs; [
     # Desktop
     fastfetch

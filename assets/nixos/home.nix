@@ -58,4 +58,13 @@
   home.sessionVariables = {
     EDITOR = "hx";
   };
+
+  home.pointerCursor = {
+    gtk.enable = true;  # Enable GTK support
+    x11.enable = true;  # Enable X11 support
+    name = "Vanilla-DMZ";  # Name of the cursor theme
+    package = pkgs.vanilla-dmz;  # Package providing the cursor theme
+    size = 32;  # Size of the cursor
+  };
+
 }
