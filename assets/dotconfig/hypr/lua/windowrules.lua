@@ -1,4 +1,6 @@
-local suppressMaximizeRule = hl.window_rule({
+-- Window rules
+
+hl.window_rule({
   name           = "suppress-maximize-events",
   match          = { class = ".*" },
 
@@ -27,6 +29,19 @@ hl.window_rule({
   float = true,
 })
 
+hl.window_rule({
+  match = { class = "dev.noctalia.Noctalia" },
+  float = true,
+  size = { 500, 600 },
+})
+
+hl.window_rule({
+  match = { class = "org.kde.dolphin" },
+  float = true,
+})
+
+-- Layer rules
+
 hl.layer_rule({
   name = "noctalia",
   match = {
@@ -36,10 +51,4 @@ hl.layer_rule({
   ignore_alpha = 0.5,
   blur = true,
   blur_popups = true,
-})
-
-hl.window_rule({
-  match = { class = "dev.noctalia.Noctalia" },
-  float = true,
-  size = { 500, 600 },
 })

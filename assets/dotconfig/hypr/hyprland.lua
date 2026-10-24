@@ -5,6 +5,7 @@ require("lua/layouts")
 require("lua/looks")
 require("lua/monitors")
 require("lua/windowrules")
+require("lua/scratchpad")
 
 hl.env("XCURSOR_THEME", "NikoCursor")
 hl.env("XCURSOR_SIZE", "24")
