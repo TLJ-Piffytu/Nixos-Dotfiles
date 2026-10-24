@@ -75,6 +75,7 @@ Then change your locale, hostname and user settings:
 ```
 > `extraLocaleSettings` is optional, you can delete it.
 > `user.user."<your user>"` must be the user your created during installation
+
 Next open `./assets/nixos/flake.nix`:
 ``` bash
   hx assets/nixos/flake.nix
