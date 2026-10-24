@@ -116,3 +116,15 @@ And change `username` and `homeDirectory`:
   ...
 }
 ```
+### Install the files
+You can do this either manually or using `install.sh`.
+
+Inspect the code:
+``` bash
+  cat install.sh
+```
+Then run `install.sh` and follow the instructions:
+``` bash
+  chmod +x ./install.sh
+  ./install.sh
+```
