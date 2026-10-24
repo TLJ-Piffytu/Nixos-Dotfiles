@@ -8,6 +8,9 @@ The easiest way to install NixOS is to use the graphical iso.
 **When installing NixOS through the graphical iso make sure to choose no window manager / no desktop enviroment!**
 ### Edit configuration.nix
 Once installed edit your `/etc/nixos/configuration.nix` and add `git` to your `environment.systemPackages`:
+``` bash
+  nano /etc/nixos/configuration.nix
+```
 ``` nix
   environment.systemPackages = with pkgs; [    
     git
