@@ -1,0 +1,47 @@
+#- History
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=10000
+setopt inc_append_history histignorealldups
+
+#- Completion
+autoload -Uz compinit && compinit
+
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+bindkey "$terminfo[kcuu1]" up-line-or-beginning-search
+bindkey "$terminfo[kcud1]" down-line-or-beginning-search
+
+# Colored and interactive menu
+eval "$(dircolors)"
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' menu select
+
+autoload -Uz select-word-style && select-word-style bash
+
+#- Editor
+export EDITOR="hx"
+
+#- Aliases
+alias nrs='sudo nixos-rebuild switch'
+alias ncg='sudo nix-collect-garbage -d'
+alias ff='fastfetch'
+alias ll='ls -la'
+
+#- Prompt
+PROMPT="> "
+RPROMPT="%(?..%F{red}%?%f) %~"
+
+setopt prompt_subst
+
+# pywal / wallust
+# (cat ~/.cache/wal/sequences &)
+# source ~/.cache/wal/colors-tty.sh
+# cat ~/.cache/wallust/sequences
+
+# PATH
+export PATH="$HOME/.local/bin:$PATH"

@@ -1,0 +1,2 @@
+inherits = "tokyonight" # Replace with your desired theme, e.g., "dracula" or "base16_default"
+"ui.background" = {}   

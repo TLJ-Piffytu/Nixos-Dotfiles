@@ -1,0 +1,24 @@
+[[language]]
+name = "lua"
+language-servers = [ "lua-language-server" ]
+auto-format = true
+formatter = { command = "stylua" }
+
+[language-server.lua-language-server.config.Lua.hint]
+enable = true
+arrayIndex = "Enable"
+setType = true
+paramName = "All"
+paramType = true
+await = true
+
+[[language]]
+name = "java"
+scope = "source.java"
+injection-regex = "java"
+file-types = ["java"]
+roots = ["pom.xml", "build.gradle"]
+language-servers = ["jdtls"]
+
+[language-server.jdtls]
+command = "jdtls"   
