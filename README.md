@@ -27,7 +27,7 @@ Once it's done `reboot` into the new generation.
 ### Clone the repo
 Clone this repo using `git` and `cd` into it:
 ``` bash
-  git clone github.com/TLJ-Piffytu/Nixos-Dotfiles
+  git clone https://github.com/TLJ-Piffytu/Nixos-Dotfiles
   cd Nixos-Dotfiles
 ```
 ### Edit
@@ -64,6 +64,9 @@ Then change your locale, hostname and user settings:
     LC_TIME = "hu_HU.UTF-8";
   };
 
+  programs.zsh.enable = true;
+  console.keyMap = "hu";
+
   ...
 
   # user settings
@@ -72,6 +75,7 @@ Then change your locale, hostname and user settings:
     description = "<your user or name>";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
+    shell = pkgs.zsh;
   };
 
   ...
