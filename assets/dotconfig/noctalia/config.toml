@@ -122,6 +122,9 @@ custom_palette = "noctalia-wallpaper-mc"
 mode = "dark"
 source = "custom"
 
+    [theme.templates]
+    builtin_ids = [ "kitty" ]
+
 [wallpaper]
 enabled = false
 
