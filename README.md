@@ -128,3 +128,33 @@ Then run `install.sh` and follow the instructions:
   chmod +x ./install.sh
   ./install.sh
 ```
+> Make sure not to run it as root!
+### Rebuild the system
+If everything went well files in `./assets/nixos/` should be in `/etc/nixos` without replacing `/etc/nixos/hardware-configuration.nix`.
+Config and local files should be in `$HOME/.config/` and `$HOME/.local/` respectively.
+Run `sudo nixos-rebuild switch`:
+``` bash
+  sudo nixos-rebuild switch
+```
+Then `reboot` into the new generation once more.
+
+## Customization
+### Hyprland
+Hyprland config can be found in `$HOME/.config/hypr`
+Your keybinds, compositor looks and autostarts live here.
+
+### Noctalia
+Noctalia config can be found in `$HOME/.config/noctalia`
+This is your shell. You can edit its TOML file or configure it from the control panel
+Use `noctalia msg settings-open` to open the settings panel from the terminal:
+``` bash
+  noctalia msg settings-open
+```
+
+### Kitty
+Kitty config can be found in "$HOME/.config/kitty"
+This is your terminal
+
+### Helix
+Helix config can be found in "$HOME/.config/helix"
+This is your editor. To change your editor you have to change `home.nix`, `dotfiles/zshrc`.
