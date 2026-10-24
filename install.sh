@@ -3,8 +3,8 @@ set -euo pipefail
 
 # DEBUG VARIABLES
 # DO NOT CHANGE
-HOME_DST="$HOME/DEBUG/home"
-NIXOS_DST="$HOME/DEBUG/nixos"
+HOME_DST="$HOME"
+NIXOS_DST="/etc/nixos"
 
 # Check for root
 if [[ "$EUID" -eq 0 ]]; then
