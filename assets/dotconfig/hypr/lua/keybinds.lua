@@ -30,6 +30,7 @@ hl.bind(mainMod .. " + S", hl.dsp.exec_cmd(ipc .. "panel-toggle control-center")
 hl.bind("ALT + Tab", hl.dsp.exec_cmd(ipc .. "window-switcher hold"))
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(ipc .. "panel-toggle session"))
 hl.bind(mainMod .. " + K", hl.dsp.exec_cmd(ipc .. "panel-toggle clipboard"))
+hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(ipc .. "bar-toggle"))
 
 -- Screenshot using Noctalia
 hl.bind(mainMod .. " + PRINT", hl.dsp.exec_cmd(ipc .. "screenshot-region"))
