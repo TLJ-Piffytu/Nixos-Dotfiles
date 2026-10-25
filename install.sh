@@ -40,6 +40,17 @@ print_dir "DOTCONFIG_DST" "$DOTCONFIG_DST"
 DOTLOCAL_DST="$HOME_DST/.local"
 print_dir "DOTLOCAL_DST" "$DOTLOCAL_DST"
 
+if [[ -f "$SCRIPT_DIR/.done" ]]; then
+    printf "\nInstalling flake.nix and home.nix..."
+
+    sudo mv "$NIXOS_DST/DIS_flake.DIS_nix" "$NIXOS_DST/flake.nix"
+    sudo mv "$NIXOS_DST/DIS_flake.DIS_nix" "$NIXOS_DST/flake.nix"
+
+    echo "Done!"
+    echo ""
+    echo "Run 'nixos-rebuild switch' again!"
+fi
+
 # Validate Sources
 for dir in "$NIXOS_SRC" "$DOTCONFIG_SRC" "$DOTLOCAL_SRC"; do
     if [[ ! -d "$dir" ]]; then
@@ -88,8 +99,14 @@ sudo mkdir -p "$NIXOS_DST"
 print_install "$NIXOS_SRC" "$NIXOS_DST"
 sudo cp -a "$NIXOS_SRC/." "$NIXOS_DST/"
 echo "* Fixing ownership"
-sudo chown root:root -R "$NIXOS_DST/" 
+sudo chown root:root -R "$NIXOS_DST/"
+
+printf "* Disabling %s and %s\n" "$NIXOS_DST/flake.nix" "$NIXOS_DST/home.nix"
+sudo mv "$NIXOS_DST/flake.nix" "$NIXOS_DST/DIS_flake.DIS_nix"
+sudo mv "$NIXOS_DST/home.nix" "$NIXOS_DST/DIS_home.DIS_nix"
+
+touch "$SCRIPT_DIR/.done" 
 
 echo "Done!"
 echo ""
-echo "Run 'nixos-rebuild switch' to apply the configurations!"
+echo "Run 'nixos-rebuild switch' then rerun this script!"
