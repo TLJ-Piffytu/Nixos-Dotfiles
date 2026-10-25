@@ -44,11 +44,13 @@ if [[ -f "$SCRIPT_DIR/.done" ]]; then
     printf "\nInstalling flake.nix and home.nix..."
 
     sudo mv "$NIXOS_DST/DIS_flake.DIS_nix" "$NIXOS_DST/flake.nix"
-    sudo mv "$NIXOS_DST/DIS_flake.DIS_nix" "$NIXOS_DST/flake.nix"
+    sudo mv "$NIXOS_DST/DIS_home.DIS_nix" "$NIXOS_DST/home.nix"
 
     echo "Done!"
     echo ""
     echo "Run 'nixos-rebuild switch' again!"
+    echo "NOTE: home-manager might complain about noctalia, just ignore it."
+    exit 0
 fi
 
 # Validate Sources
@@ -88,6 +90,9 @@ cp -a "$DOTLOCAL_SRC/." "$DOTLOCAL_DST/"
 
 print_install "$DOTCONFIG_SRC" "$DOTCONFIG_DST"
 cp -a "$DOTCONFIG_SRC/." "$DOTCONFIG_DST/"
+
+printf "Removing $HOME_DST/.zshrc...\n"
+[[ -f "$HOME_DST/.zshrc" ]] && rm "$HOME_DST/.zshrc"
 
 # Install nixos config files
 echo ""
