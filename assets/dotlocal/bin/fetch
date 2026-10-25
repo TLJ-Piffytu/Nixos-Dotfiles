@@ -4,12 +4,14 @@ set -euo pipefail
 print_help() {
   printf "Usage: fetch [options]\n\n"
   printf "Options:"
-  printf "\n\t-v, --version  Show version information"
-  printf "\n\t-h, --help     Show this help message"
-  printf "\n\t-v, --version  Show version information"
-  printf "\n\t-v, --version  Show version information"
-  printf "\n\t-v, --version  Show version information"
-  printf "\n\t-v, --version  Show version information"
+  printf "\n\t-v,  --version                Show version information"
+  printf "\n\t-h,  --help                   Show this help message"
+  printf "\n\t-u,  --url              [URL] URL to download from"
+  printf "\n\t-c,  --skip-cover             Skip thumbnail download"
+  printf "\n\t-ly, --skip-lyrics            Skip subtitle download"
+  printf "\n\t-a,  --skip-audio             Skip audio dowload"
+  printf "\n\t-od, --output-directory [DIR] Directory to download to"
+  printf "\n\t-on, --output-name      [STR] Name of the downloaded files"
   printf "\n"
 }
 
@@ -45,7 +47,6 @@ while [[ $# -gt 0 ]]; do
         exit 1
       fi
       URL=$2
-      echo "$URL"
       shift 2
       ;;
     -od|--output-directory)
@@ -54,7 +55,6 @@ while [[ $# -gt 0 ]]; do
         exit 1
       fi
       DST=$2
-      echo "$DST"
       shift 2
       ;;
     -on|--output-name)
@@ -63,7 +63,6 @@ while [[ $# -gt 0 ]]; do
         exit 1
       fi
       NAME=$2
-      echo "$NAME"
       shift 2
       ;;
     -c|--skip-cover)
@@ -107,6 +106,6 @@ if [[ ! -z $NAME ]]; then
   COMMAND+="-o \"$NAME.%(ext)s\" "
 fi
 
-COMMAND+="-P $DST $URL"
+COMMAND+="--no-playlist -P $DST \"$URL\""
 
 echo $COMMAND
