@@ -36,6 +36,7 @@
 
   # INPUT -------------------------------------------------------------------------------
   programs.zsh.enable = true;
+  users.users.piffytu.shell = pkgs.zsh;
   console.keyMap = "hu";
 
   # SERVICES-----------------------------------------------------------------------------
@@ -70,7 +71,6 @@
     description = "Piffytu";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
-    shell = pkgs.zsh;
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -97,6 +97,8 @@
     unzip
     ripgrep
     fd
+    yt-dlp
+    ffmpeg
 
     # LSP
     lua-language-server

@@ -1,0 +1,112 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+print_help() {
+  printf "Usage: fetch [options]\n\n"
+  printf "Options:"
+  printf "\n\t-v, --version  Show version information"
+  printf "\n\t-h, --help     Show this help message"
+  printf "\n\t-v, --version  Show version information"
+  printf "\n\t-v, --version  Show version information"
+  printf "\n\t-v, --version  Show version information"
+  printf "\n\t-v, --version  Show version information"
+  printf "\n"
+}
+
+print_version() {
+  printf "fetch v0.1\n"
+}
+
+URL=""
+DST="./"
+NAME=""
+GET_COVER=false
+GET_LYRICS=true
+GET_AUDIO=true
+
+if [[ $# == 0 ]]; then
+  print_help
+  exit 0
+fi
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -h|--help)
+      print_help
+      exit 0
+      ;;
+    -v|--version)
+      print_version
+      exit 0
+      ;;
+    -u|--url)
+      if [[ $# -lt 2 || -z "$2" ]]; then
+        printf "URL not provided\n"
+        exit 1
+      fi
+      URL=$2
+      echo "$URL"
+      shift 2
+      ;;
+    -od|--output-directory)
+      if [[ ! -d $2 ]]; then
+        printf "Output directory \"%s\" does not exist\n" "$2"
+        exit 1
+      fi
+      DST=$2
+      echo "$DST"
+      shift 2
+      ;;
+    -on|--output-name)
+      if [[ $# -lt 2 || -z "$2" ]]; then
+        printf "URL not provided\n"
+        exit 1
+      fi
+      NAME=$2
+      echo "$NAME"
+      shift 2
+      ;;
+    -c|--skip-cover)
+      GET_COVER=false
+      shift
+      ;;
+    -ly|--skip-lyrics)
+      GET_LYRICS=false
+      shift
+      ;;
+    -a|--skip-audio)
+      GET_AUDIO=false
+      shift
+      ;;
+    *)
+      printf "Invalid argument: %s\n" "$1"
+      exit 1
+      ;;
+  esac
+done
+
+if [[ -z $URL ]]; then
+  printf "URL not provided\n"
+  exit 1
+fi
+
+COMMAND="yt-dlp "
+if [[ $GET_AUDIO ]]; then
+  COMMAND+="-x --audio-format opus --audio-quality 0 "
+fi
+
+if [[ $GET_LYRICS ]]; then
+  COMMAND+="--write-subs --convert-subs lrc "
+fi
+
+if [[ $GET_COVER ]]; then
+  COMMAND+="--write-thumbnail --convert-thumbnails png " 
+fi
+  
+if [[ ! -z $NAME ]]; then
+  COMMAND+="-o \"$NAME.%(ext)s\" "
+fi
+
+COMMAND+="-P $DST $URL"
+
+echo $COMMAND
