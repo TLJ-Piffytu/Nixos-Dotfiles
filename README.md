@@ -138,7 +138,7 @@ Then run `install.sh` without root and follow the instructions:
 > You will have to rebuild twice as your current system doesn't allow flakes.
 > Home-manager might complain about config files, you can ignore it
 ### Rebuild the system
-If everything went well files in `./assets/nixos/` should be in `/etc/nixos` without replacing `/etc/nixos/hardware-configuration.nix`.
+If everything went well, files in `./assets/nixos/` should be in `/etc/nixos` without replacing `/etc/nixos/hardware-configuration.nix`.
 Config and local files should be in `$HOME/.config/` and `$HOME/.local/` respectively.
 Run `sudo nixos-rebuild switch`:
 ``` bash
@@ -160,7 +160,7 @@ Use `noctalia msg settings-open` to open the settings panel from the terminal:
 ```
 
 ### Kitty
-Kitty config can be found in "$HOME/.conYou will have to rebuild twice as your current system doesn't allow flakes.
+Kitty config can be found in `$HOME/.config/kitty`.
 > Home-manager might complain about config files, you can ignore it
 
 ### Helix
