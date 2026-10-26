@@ -35,6 +35,13 @@
   programs.obs-studio = {
     enable = true;
   };
+
+  programs.yazi = {
+    enable = true;
+    plugins = with pkgs.yaziPlugins; {
+      smart-enter.package = smart-enter;
+    };
+  };
   
   # PACKAGES --------------------------------------------------------------
   home.packages = with pkgs; [
@@ -50,7 +57,6 @@
     prismlauncher
     helix
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-    kdePackages.dolphin
   ];
 
 

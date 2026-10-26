@@ -1,0 +1,9 @@
+# yazi.toml
+[mgr]
+show_symlink=true
+
+ratio=[0, 5, 5]
+scrolloff=20
+
+sort_by="natural"
+linemode="size"

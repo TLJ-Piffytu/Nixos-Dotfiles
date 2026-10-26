@@ -1,6 +1,6 @@
 -- Apps
 local terminal    = "kitty"
-local fileManager = "dolphin"
+local fileManager = "kitty --class='filemanager' yazi"
 
 local ipc         = "noctalia msg " -- Helper variable
 
@@ -8,7 +8,7 @@ local mainMod     = "SUPER"         -- Main modifier
 
 -- App launcher
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 
 -- Hyprland exit
 hl.bind(mainMod .. " + SHIFT + M",

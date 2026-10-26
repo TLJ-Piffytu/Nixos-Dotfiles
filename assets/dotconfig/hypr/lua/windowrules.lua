@@ -36,8 +36,9 @@ hl.window_rule({
 })
 
 hl.window_rule({
-  match = { class = "org.kde.dolphin" },
+  match = { class = "filemanager" },
   float = true,
+  size = { 800, 600 },
 })
 
 -- Layer rules
