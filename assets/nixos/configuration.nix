@@ -1,5 +1,20 @@
 { config, pkgs, ... }:
 
+let
+  basicSDDM = pkgs.stdenv.mkDerivation {
+    pname = "basicSDDM";
+    version = "1.4";
+
+    src = ./dotfiles/basicSDDM;
+
+    dontBuild = true;
+
+    installPhase = ''
+      mkdir -p $out/share/sddm/themes/basicSDDM
+      cp -r $src/. $out/share/sddm/themes/basicSDDM/
+    '';
+  };
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -49,11 +64,18 @@
   hardware.bluetooth.enable = true;
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
+
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+    theme = "basicSDDM";
+  };
   
   # PROGRAMS-----------------------------------------------------------------------------
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+    withUWSM = true;
   };
 
   programs.steam = {
@@ -85,6 +107,7 @@
     fastfetch
     brightnessctl
     wl-clipboard
+    basicSDDM
     
     # Dev
     git

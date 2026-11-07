@@ -57,6 +57,7 @@
     prismlauncher
     helix
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inkscape
   ];
 
 
