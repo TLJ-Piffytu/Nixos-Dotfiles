@@ -12,8 +12,8 @@ DOTCONFIG_FILES=(
   "yazi/"
 )
 
-DOTLOCAL_FILES=(
-  "bin/fetch"
+DOTLOCALBIN_FILES=(
+  "fetch"
 )
 
 NIXOS_FILES=(
@@ -71,10 +71,10 @@ for file in "${DOTCONFIG_FILES[@]}"; do
 done
 
 echo ""
-echo "DOTLOCAL"
+echo "DOTLOCALBIN"
 # .local files
-for file in "${DOTLOCAL_FILES[@]}"; do
-    print_selected $DOTLOCAL_DST "$DOTLOCAL_SRC$file"
+for file in "${DOTLOCALBIN_FILES[@]}"; do
+    print_selected "$DOTLOCAL_DST/bin" "$DOTLOCAL_SRC$file"
 done
 
 echo ""
@@ -119,11 +119,11 @@ for file in "${DOTCONFIG_FILES[@]}"; do
 done
 
 echo "Copying .local"
-for file in "${DOTLOCAL_FILES[@]}"; do
-  SRC="$DOTLOCAL_SRC$file"
+for file in "${DOTLOCALBIN_FILES[@]}"; do
+  SRC="${DOTLOCAL_SRC}bin/$file"
   if [[ -e $SRC ]]; then
-    cp -r "$SRC" "$DOTLOCAL_DST"
-    print_copy "$SRC" "$DOTLOCAL_DST"
+    cp -r "$SRC" "$DOTLOCAL_DST/bin/"
+    print_copy "$SRC" "$DOTLOCAL_DST/bin/"
   else
     print_skip "$SRC"
   fi
